@@ -1,7 +1,6 @@
 import './components/style.css';
 import Card from "./components/Card";
 
-// カード（を識別するid）をランダムに生成するcomponent
 const App = () => {
     
     // Fisher-Yates shuffle algorithm

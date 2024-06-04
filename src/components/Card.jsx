@@ -104,9 +104,9 @@ const Card = ({ shuffle, shuffledNumbers }) => {
         }
     };
 
-    useEffect(() => {
-        console.log(shuffledNumbers);
-    }, []);
+    // useEffect(() => {
+    //     console.log(shuffledNumbers);
+    // }, []);
 
     const restart = () => {
         setIsFlipped({});
@@ -125,7 +125,7 @@ const Card = ({ shuffle, shuffledNumbers }) => {
     return (
         <>
             <div className="shuffle-div">
-                <button className='shuffle-button' onClick={restart}>shuffle & play</button>
+                <button className='shuffle-button' onClick={restart}><span>shuffle & play</span></button>
             </div>
 
             <div className='container'>
@@ -139,16 +139,11 @@ const Card = ({ shuffle, shuffledNumbers }) => {
                             id={num}
                             src="./cardimage.png"
                             className="card-back"
-                            onClick={(e) => handleClick(num)}
+                            onClick={() => handleClick(num)}
                             alt="トランプ裏面のpngが表示されませんでした"
                         />
                         <img
                             id={num}
-                            // src={
-                            //     !matchedPairs.includes(num)
-                            //         ? getCardImage(num)
-                            //         : getSlashCardImage(num)
-                            // }
                             src={getCardImage(num)}
                             className="card-front"
                             onClick={() => handleClick(num)}
@@ -170,7 +165,7 @@ const Card = ({ shuffle, shuffledNumbers }) => {
                         }
                         <hr />
                         <ul className='clear-ul'>
-                            <li>
+                            <li className='clear-li'>
                                 あなたの得点は<b>{score}点</b>です
                                 {
                                     score >= 4
