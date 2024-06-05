@@ -5,7 +5,7 @@ const Shuffle = ({ setIsFlipped, setClickedCards, setMatchedPairs, setScore, shu
         setClickedCards(new Set());
         setMatchedPairs([]);
         setScore(0);
-        // shuffleした際にすでにめくられているlogoがあった場合、そのlogoのshuffle後の新しいlogoが一瞬移ってしまうのを阻止するためのsetTimeout
+        // shuffleした際にすでにめくられているlogoがあった場合、そのlogoのshuffle後の新しいlogoが一瞬見えてしまうのを阻止するためのsetTimeout
         setTimeout(() => {
             shuffle(shuffledNumbers);
         }, 100);
