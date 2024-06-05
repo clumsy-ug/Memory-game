@@ -9,9 +9,6 @@ const Shuffle = ({ setIsFlipped, setClickedCards, setMatchedPairs, setScore, shu
         setTimeout(() => {
             shuffle(shuffledNumbers);
         }, 100);
-        setTimeout(() => {
-            console.log(shuffledNumbers);
-        }, 200);
     }
 
     return (

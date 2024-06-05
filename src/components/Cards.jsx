@@ -30,10 +30,6 @@ const Cards = ({ isFlipped, setIsFlipped, setClickedCards, clickedCards, setMatc
         }
     }, [clickedCards]);
     
-    useEffect(() => {
-        console.log(shuffledNumbers);
-    }, []);
-
     const getCardId = (num) => {
         if (!matchedPairs.includes(num)) {
             switch (num) {
