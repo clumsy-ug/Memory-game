@@ -12,6 +12,8 @@
     - カードをめくる動作として使用
 - [React icons](https://react-icons.github.io/react-icons/)
     - クリア（ゲーム終了）演出時に使用
+- [react-hot-toast](https://www.npmjs.com/package/react-hot-toast)
+    - ノーミスクリア演出時に使用
 - [Bootstrap](https://getbootstrap.jp/docs/5.3/getting-started/introduction/)
     - シャッフル用のボタンに使用
 
@@ -19,6 +21,7 @@
 ```bash
 npm i react-card-flip --save
 npm i react-icons --save
+npm i react-hot-toast
 ```
 
 ### 開発環境立ち上げ

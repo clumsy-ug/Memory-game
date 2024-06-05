@@ -1,8 +1,18 @@
 import { GiPartyPopper } from "react-icons/gi";
 import { LiaGrinBeamSweat } from "react-icons/lia";
+import toast, { Toaster } from 'react-hot-toast';
 
 // 全てのカードをめくったときに出る演出の処理を実装したコンポーネント
 const Clear = ({ matchedPairs, score }) => {
+
+    const perfectToast = () => {
+        if (score === 9) {
+            toast('なんてことだ！強運の持ち主が現れた！🥳', {
+                icon: '🥳',
+            });
+        }
+    };
+
     return (
         <>
             {
@@ -34,13 +44,15 @@ const Clear = ({ matchedPairs, score }) => {
                             </ul>
                             <li className='clear-li'>理論値最高点は9点です</li>
                             <ul>
-                                <li>運が良い、かつノーミスの場合</li>
+                                <li>ノーミスの場合</li>
                             </ul>
                         </ul>
                     </>
                     :
                     false
             }
+            {perfectToast()}
+            <Toaster />
         </>
     )
 }
