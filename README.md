@@ -2,16 +2,18 @@
 - 9種類のプログラミング関連のロゴで、神経衰弱を楽しもう！
 - レスポンシブなWebデザイン
 
-![memorygame](https://github.com/clumsyg/Memory-game/assets/154292137/25fa4b4b-26c3-48fd-a039-037372bfa61d)
+![memorygame](https://github.com/clumsyg/Memory-game/assets/154292137/1f931fda-a047-491c-9cbc-9f671ab151c1)
 
 ### 使用技術
 - `React`(`JavaScript`)
 - [Vite](https://ja.vitejs.dev)
     - `React`のプロジェクト作成で使用
 - [react-card-flip](https://www.npmjs.com/package/react-card-flip)
-    - カードをめくる動作に使用
+    - カードをめくる動作として使用
 - [React icons](https://react-icons.github.io/react-icons/)
-    - クリア時の演出で使用
+    - クリア（ゲーム終了）演出時に使用
+- [Bootstrap](https://getbootstrap.jp/docs/5.3/getting-started/introduction/)
+    - シャッフル用のボタンに使用
 
 ### インストール
 ```bash
@@ -25,5 +27,5 @@ npm run dev
 ```
 
 ## その他
-- 主にsrc/components内にコードを記述
+- 主にsrcディレクトリ内にコードを記述
 - 画像は全てpublicディレクトリ内に保管

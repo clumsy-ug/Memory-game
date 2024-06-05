@@ -110,6 +110,7 @@
         width: 95px;
         height: 142.5px;
     }
+
     .card-front {
         width: 93px;
         height: 140.6px;
@@ -147,12 +148,6 @@
     background-color: white;
 }
 
-.shuffle-button:hover {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    transform: scale(1.07);
-}
-
 .card-back:hover {
     cursor: pointer;
 }
@@ -167,39 +162,19 @@
     margin-top: 20px;
 }
 
-.shuffle-button {
-    position: relative;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: cornsilk;
-}
-
-.shuffle-button:active span::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    margin-top: -50px;
-    margin-left: -50px;
-    content: "";
-    background: rgb(130, 156, 245);
-    border-radius: 100%;
-    animation: ripple 0.3s ease-out;
-}
-
 @keyframes ripple {
     0% {
         opacity: 1;
         transform: scale(0.0);
     }
+
     100% {
         opacity: 0;
         transform: scale(1.0);
     }
 }
 
-.shuffle-button:hover .clear-icon-good {
+.clear-icon-good {
     display: inline;
     width: 30px;
     height: 30px;

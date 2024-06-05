@@ -1,13 +1,7 @@
+import { useEffect } from 'react';
 import ReactCardFlip from 'react-card-flip';
-import { GiPartyPopper } from "react-icons/gi";
-import { LiaGrinBeamSweat } from "react-icons/lia";
-import { useEffect, useState } from 'react';
 
-const Card = ({ shuffle, shuffledNumbers }) => {
-    const [isFlipped, setIsFlipped] = useState({});
-    const [clickedCards, setClickedCards] = useState(new Set());
-    const [matchedPairs, setMatchedPairs] = useState([]);
-    const [score, setScore] = useState(0);
+const Cards = ({ isFlipped, setIsFlipped, setClickedCards, clickedCards, setMatchedPairs, setScore, matchedPairs, shuffledNumbers }) => {
 
     const handleClick = (num) => {
         if (!isFlipped[num]) {
@@ -19,8 +13,8 @@ const Card = ({ shuffle, shuffledNumbers }) => {
     useEffect(() => {
         if (clickedCards.size === 2) {
             const [first, second] = [...clickedCards];
-            const firstSrc = getCardImage(first);
-            const secondSrc = getCardImage(second);
+            const firstSrc = getCardId(first);
+            const secondSrc = getCardId(second);
 
             if (firstSrc === secondSrc) {  // 成功
                 setClickedCards(new Set());
@@ -36,7 +30,7 @@ const Card = ({ shuffle, shuffledNumbers }) => {
         }
     }, [clickedCards]);
 
-    const getCardImage = (num) => {
+    const getCardId = (num) => {
         if (!matchedPairs.includes(num)) {
             switch (num) {
                 case shuffledNumbers[0]:
@@ -104,32 +98,12 @@ const Card = ({ shuffle, shuffledNumbers }) => {
         }
     };
 
-    // useEffect(() => {
-    //     console.log(shuffledNumbers);
-    // }, []);
-
-    const restart = () => {
-        setIsFlipped({});
-        setClickedCards(new Set());
-        setMatchedPairs([]);
-        setScore(0);
-
-        // shuffleした際に表面があった場合、その表面のshuffle後の新しい表面が一瞬移ってしまうのを阻止するためのsetTimeout
-        setTimeout(() => {
-            shuffle(shuffledNumbers);
-        }, 100);
-    }
-
-    const numbers = Array.from({ length: 18 }, (_, i) => i + 1);
+    const nums = Array.from({ length: 18 }, (_, i) => i + 1);
 
     return (
-        <>
-            <div className="shuffle-div">
-                <button className='shuffle-button' onClick={restart}><span>shuffle & play</span></button>
-            </div>
-
-            <div className='container'>
-                {numbers.map(num => (
+        <div className='container'>
+            {
+                nums.map(num => (
                     <ReactCardFlip
                         key={num}
                         isFlipped={isFlipped[num]}
@@ -144,52 +118,16 @@ const Card = ({ shuffle, shuffledNumbers }) => {
                         />
                         <img
                             id={num}
-                            src={getCardImage(num)}
+                            src={getCardId(num)}
                             className="card-front"
                             onClick={() => handleClick(num)}
                             alt="ロゴのsvgが表示されませんでした"
                         />
                     </ReactCardFlip>
-                ))}
-            </div>
-            {
-                matchedPairs.length === 18
-                    ?
-                    <>
-                        <br />
-                        <span><b className='clear-b'>クリア！</b></span>
-                        {
-                            score === 9
-                            ? <h1 className='excellent-h1'>Excellent!!!</h1>
-                            : false
-                        }
-                        <hr />
-                        <ul className='clear-ul'>
-                            <li className='clear-li'>
-                                あなたの得点は<b>{score}点</b>です
-                                {
-                                    score >= 4
-                                        ? <GiPartyPopper className='clear-icon-good' />
-                                        : <LiaGrinBeamSweat className='clear-icon-bad' />
-                                }
-                                &nbsp;(ミス{9 - score}回)
-                            </li>
-                            <li className='clear-li'><b>計算方法 ： </b>初期値0点、ミス-1点、ペア発見+1点</li>
-                            <li className='clear-li'>どんなに運が悪くても必ず4点以上取ることができます</li>
-                            <ul>
-                                <li>4点以上を確実に取れるように訓練しましょう！</li>
-                            </ul>
-                            <li className='clear-li'>理論値最高点は9点です</li>
-                            <ul>
-                                <li>運が良い、かつノーミスの場合</li>
-                            </ul>
-                        </ul>
-                    </>
-                    :
-                    false
+                ))
             }
-        </>
+        </div>
     )
 }
 
-export default Card;
+export default Cards;

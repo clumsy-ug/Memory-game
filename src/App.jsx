@@ -1,22 +1,38 @@
+import { useState } from 'react';
+import Shuffle from './components/Shuffle';
+import Cards from './components/Cards';
+import Clear from './components/Clear';
 import './components/style.css';
-import Card from "./components/Card";
 
-const App = () => {
-    
-    // Fisher-Yates shuffle algorithm
-    const shuffle = array => {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-    const numbers = Array.from({ length: 18 }, (_, i) => i + 1);
-    const shuffledNumbers = shuffle(numbers);
+const App = ({ shuffle, shuffledNumbers }) => {
+    const [isFlipped, setIsFlipped] = useState({});
+    const [clickedCards, setClickedCards] = useState(new Set());
+    const [matchedPairs, setMatchedPairs] = useState([]);
+    const [score, setScore] = useState(0);
 
     return (
         <>
-            <Card shuffle={shuffle} shuffledNumbers={shuffledNumbers} />
+            <Shuffle
+                setIsFlipped={setIsFlipped}
+                setClickedCards={setClickedCards}
+                setMatchedPairs={setMatchedPairs}
+                setScore={setScore}
+                shuffle={shuffle}
+                shuffledNumbers={shuffledNumbers}
+            />
+
+            <Cards
+                clickedCards={clickedCards}
+                setClickedCards={setClickedCards}
+                setMatchedPairs={setMatchedPairs}
+                setScore={setScore}
+                setIsFlipped={setIsFlipped}
+                matchedPairs={matchedPairs}
+                shuffledNumbers={shuffledNumbers}
+                isFlipped={isFlipped}
+            />
+
+            <Clear matchedPairs={matchedPairs} score={score} />
         </>
     )
 }
