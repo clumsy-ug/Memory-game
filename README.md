@@ -1,5 +1,7 @@
-# 神経衰弱ゲーム
-- 9種類のプログラミング関連のロゴで、神経衰弱を楽しもう！
+# 神経衰弱
+[遊ぶ](https://clumsyg.github.io/Memory-game/)
+
+- 9種類のプログラミング関連のロゴで、神経衰弱ゲームを楽しもう！
 - レスポンシブなWebデザイン
 
 ![memorygame](https://github.com/clumsyg/Memory-game/assets/154292137/1f931fda-a047-491c-9cbc-9f671ab151c1)
